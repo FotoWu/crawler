@@ -6,6 +6,7 @@ import time
 class JavaScriptMiddleware(object):
     def process_request(self, request, spider):
         if 'zhihu' or 'weibo' in spider.name:
+            print("fuck")
             print("PhantomJs is starting...")
             driver = webdriver.PhantomJS(executable_path='/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
             driver.get(request.url)
