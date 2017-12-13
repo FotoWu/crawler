@@ -10,4 +10,5 @@ class WeiboSpider(scrapy.spiders.CrawlSpider):
     ]
 
     def parse(self, response):
-        print(BeautifulSoup(response.body))
+        soup = BeautifulSoup(response.body)
+
