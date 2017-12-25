@@ -17,32 +17,50 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
     name = "zhihuId"
     allowed_domains = ["zhihu.com"]
     start_urls = [
-        ""
     ]
     base_url = "https://www.zhihu.com"
     basic_information = {}
     following_users = []
     follower_users = []
-    MAX_CRAWL_USERS = 20
-    MAX_CRAWL_QUESTIONS = 20
-    MAX_COMMENT_NUM = 20
+    MAX_CRAWL_USERS = 40
+    MAX_CRAWL_QUESTIONS = 40
+    MAX_COMMENT_NUM = 40
     post_num = answer_num = follower_num = following_num = 0
 
     def start_requests(self):
+        yield Request(url="https://www.zhihu.com/people/zhang-jia-wei/",
+                      callback=self.parse_basic_information)
         yield Request(url="https://www.zhihu.com/people/excited-vczh/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/chu-yang-51-32/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/sgai/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/SemitLee/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/jieducm/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/chen-guang-55/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/yuhang-liu-34/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/chibaole/",
+                      callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/wang-rui-en/",
                       callback=self.parse_basic_information)
 
     def add_following_pages(self, base_url):
+        crawl_urls = []
         total_pages = self.MAX_CRAWL_USERS // 20
         for page in range(total_pages):
             params = {"page": page+1}
             current_num = (page+1) * 20
             url = base_url + 'following?' + urlencode(params)
             if current_num < self.following_num:
-                self.start_urls.append(url)
+                crawl_urls.append(url)
             url = base_url + 'followers?' + urlencode(params)
             if current_num < self.follower_num:
-                self.start_urls.append(url)
+                crawl_urls.append(url)
 
         total_pages = self.MAX_CRAWL_QUESTIONS // 20
         for page in range(total_pages):
@@ -50,10 +68,11 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
             current_num = (page+1) * 20
             url = base_url + 'answers?' + urlencode(params)
             if current_num < self.answer_num:
-                self.start_urls.append(url)
+                crawl_urls.append(url)
             url = base_url + 'posts?' + urlencode(params)
             if current_num < self.post_num:
-                self.start_urls.append(url)
+                crawl_urls.append(url)
+        return crawl_urls
 
     def parse_basic_information(self, response):
         # # 获得基本信息
@@ -87,33 +106,33 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
             print(label, ':', value)
         tab_label_list = ['following_num', 'follower_num']
         for index, number_board_item in enumerate(soup.find_all('a', {'class', 'Button NumberBoard-item Button--plain'})):
-            label = number_board_item.div.text
-            value = number_board_item.div.next_sibling.text
+            label = number_board_item.div.div.text
+            value = number_board_item.div.div.next_sibling.text
             user_item[tab_label_list[index]] = value
             print(label, ":", value)
 
         follow_ship_card = soup.find('div', 'FollowshipCard')
-        self.following_num = int(follow_ship_card.find('div', 'NumberBoard-value').text)
-        self.follower_num = int(follow_ship_card.find_all('div', 'NumberBoard-value')[1].text)
-        self.answer_num = int(soup.find('li', {'aria-controls': 'Profile-answers'}).span.text)
-        self.post_num = int(soup.find('li', {'aria-controls': 'Profile-posts'}).span.text)
+        self.following_num = int(re.sub('\D', '', user_item['following_num']))
+        self.follower_num = int(re.sub('\D', '', user_item['follower_num']))
+        self.answer_num = int(re.sub('\D', '', soup.find('li', {'aria-controls': 'Profile-answers'}).span.text))
+        self.post_num = int(re.sub(r'\D', '', soup.find('li', {'aria-controls': 'Profile-posts'}).span.text))
         print(self.follower_num, self.following_num, self.answer_num, self.post_num)
-        self.add_following_pages(response.url)
+        crawl_urls = self.add_following_pages(response.url)
 
         # 爬取start_urls
-        for url in self.start_urls:
+        for url in crawl_urls:
             yield self.make_requests_from_url(url=url)
+        yield user_item
 
     def parse(self, response):
         if "following" in response.url:
-            self.parse_followings(response)
+            yield from self.parse_followings(response)
         elif "follower" in response.url:
-            self.parse_followers(response)
+            yield from self.parse_followers(response)
         elif "answers" in response.url:
-            self.parse_answers(response)
+            yield from self.parse_answers(response)
         elif "posts" in response.url:
-            self.parse_posts(response)
-
+            yield from self.parse_posts(response)
 
     def parse_followings(self, response):
         print("正在爬取", response.url)
@@ -122,8 +141,7 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
         following_user_names = soup.find_all('span', 'UserItem-name')
         for following_user_name in following_user_names:
             self.following_users.append(following_user_name.text)
-            follow_list = FollowingListItem(user_name=user_name, follow_name=following_user_name)
-            print(len(self.following_users), following_user_name.text)
+            follow_list = FollowingListItem(user_name=user_name, follow_name=following_user_name.text)
             yield follow_list
 
     def parse_followers(self, response):
@@ -133,8 +151,8 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
         follower_user_names = soup.find_all('span', 'UserItem-name')
         for follower_user_name in follower_user_names:
             self.follower_users.append(follower_user_name.text)
-            follow_list = FollowingListItem(user_name=follower_user_name, follow_name=user_name)
-            print(len(self.follower_users), follower_user_name.text)
+            follow_list = FollowingListItem(user_name=follower_user_name.text, follow_name=user_name)
+            yield follow_list
 
     def parse_answers(self, response):
         print("正在爬取", response.url)
@@ -149,7 +167,7 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
             comment_num = item.find('div', 'ContentItem-actions').button.text
             answer_item = AnswerItem(title=title, title_href=title_href, content=content,
                                      up_num=up_num, comment_num=comment_num)
-            print(title)
+            yield answer_item
 
     def parse_posts(self, response):
         print("正在爬取", response.url)
@@ -164,13 +182,13 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
             comment_num = item.find('div', 'ContentItem-actions').find('button', 'Button--withIcon').text
             post_item = PostItem(
                 title=title, title_href=title_href, content=content, up_num=up_num, comment_num=comment_num)
-            print(title)
-        self.parse_post_comment(response.url)
+            yield post_item
+        yield from self.parse_post_comment(response.url)
 
     # 爬取一个post界面的comment
     def parse_post_comment(self, url):
         print("评论操作")
-        driver = webdriver.PhantomJS(executable_path='/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+        driver = webdriver.PhantomJS(executable_path='/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs')
         driver.get(url)
         time.sleep(0.5)
         for post in driver.find_elements_by_xpath("//div[@id='Profile-posts']//div[@class='List-item']"):
@@ -191,8 +209,8 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
                         break
                     current_comment_num += 1
                     comment_text = "\n".join(comment_item.text.split("\n")[0:-1])
-                    post_comment_item = PostCommentItem(post_title=post_title, text=comment_text)
-                    print(comment_text)
+                    post_comment_item = PostCommentItem(post_title=post_title, comment_text=comment_text)
+                    yield post_comment_item
                 if current_comment_page_num < comment_page_num:
                     current_comment_page_num += 1
                     next_button = post.find_element_by_xpath(".//button[contains(@class, 'PaginationButton-next')]")

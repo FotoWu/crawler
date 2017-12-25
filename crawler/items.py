@@ -51,4 +51,4 @@ class PostItem(scrapy.Item):
 
 class PostCommentItem(scrapy.Item):
     post_title = scrapy.Field()
-    text = scrapy.Field()
+    comment_text = scrapy.Field()
