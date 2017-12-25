@@ -73,3 +73,5 @@ class ZhihuPipeline(object):
             except Exception as error:
                 print(error)
             return item
+        else:
+            print(item)

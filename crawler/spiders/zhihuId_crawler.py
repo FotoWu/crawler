@@ -17,6 +17,7 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
     name = "zhihuId"
     allowed_domains = ["zhihu.com"]
     start_urls = [
+        ""
     ]
     base_url = "https://www.zhihu.com"
     basic_information = {}
@@ -28,11 +29,8 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
     post_num = answer_num = follower_num = following_num = 0
 
     def start_requests(self):
-        urls = ["https://www.zhihu.com/people/excited-vczh/",
-                "https://www.zhihu.com/people/xiaozhenliu/"]
-        for url in urls:
-            yield Request(url=url,
-                          callback=self.parse_basic_information)
+        yield Request(url="https://www.zhihu.com/people/excited-vczh/",
+                      callback=self.parse_basic_information)
 
     def add_following_pages(self, base_url):
         total_pages = self.MAX_CRAWL_USERS // 20
@@ -103,20 +101,19 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
         self.add_following_pages(response.url)
 
         # 爬取start_urls
-        return user_item
-        # for url in self.start_urls:
-        #     yield self.make_requests_from_url(url=url)
+        for url in self.start_urls:
+            yield self.make_requests_from_url(url=url)
 
     def parse(self, response):
-        pass
-        # if "following" in response.url:
-        #     self.parse_followings(response)
-        # elif "follower" in response.url:
-        #     self.parse_followers(response)
-        # elif "answers" in response.url:
-        #     self.parse_answers(response)
-        # elif "posts" in response.url:
-        #     self.parse_posts(response)
+        if "following" in response.url:
+            self.parse_followings(response)
+        elif "follower" in response.url:
+            self.parse_followers(response)
+        elif "answers" in response.url:
+            self.parse_answers(response)
+        elif "posts" in response.url:
+            self.parse_posts(response)
+
 
     def parse_followings(self, response):
         print("正在爬取", response.url)
@@ -127,6 +124,7 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
             self.following_users.append(following_user_name.text)
             follow_list = FollowingListItem(user_name=user_name, follow_name=following_user_name)
             print(len(self.following_users), following_user_name.text)
+            yield follow_list
 
     def parse_followers(self, response):
         print("正在爬取", response.url)
