@@ -11,7 +11,7 @@ from crawler.items import *
 import re
 
 
-class ZhihuPipeline(object):
+class ZhihuIdPipeline(object):
 
     def __init__(self):
         self.connect = pymysql.connect(
@@ -114,4 +114,67 @@ class ZhihuPipeline(object):
             except Exception as error:
                 print(error)
                 return item
+        else:
+            return item
 
+
+class ZhihuQuestionPipeline(object):
+    def open_spider(self, spider):
+        pass
+
+    def __init__(self):
+        self.connect = pymysql.connect("localhost","root","",db="zhihu_questions",use_unicode=True, charset="utf8")
+        self.cursor = self.connect.cursor()
+
+    def process_item(self, item, spider):
+        if item.__class__ == ZhihuQuestionQuestionItem:
+            for each in item:
+                item[each] = item[each].replace("'", "\\\'")
+            try:
+                self.cursor.execute("select * from question WHERE id = %s",
+                                    (item['id']))
+                ret = self.cursor.fetchone()
+                if ret is None:
+                    sql = "use zhihu_questions; insert into question values(" + item['id'] + ",'" + item[
+                        'url'] + "','" + item['name'] + "','" + item['comment_count'] + "','" + item[
+                              'answer_count'] + "')".encode('utf-8').decode('utf-8')
+                    self.cursor.execute(sql)
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+                return item
+        if item.__class__ == ZhihuQuestionCommentItem:
+            for each in item:
+                item[each] = item[each].replace("'", "\\\'")
+            try:
+                self.cursor.execute("select * from comment WHERE related_id = %s and author = %s",
+                                    (item['related_id'],item['author']))
+                ret = self.cursor.fetchone()
+                if ret is None:
+                    item['content'].replace("'", "\'")
+                    sql = "use zhihu_questions; insert into comment values(" + item['related_id'] + ",'" + item[
+                        'author'] + "','" + item['release_time'] + "','" + item['content'] + "')".encode(
+                        'utf-8').decode('utf-8')
+                    self.cursor.execute(sql)
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+                return item
+        if item.__class__ == ZhihuQuestionAnswerItem:
+            for each in item:
+                item[each] = item[each].replace("'", "\\\'")
+            try:
+                self.cursor.execute("select * from answer WHERE id = %s",
+                                    (item['id']))
+                ret = self.cursor.fetchone()
+                if ret is None:
+                    sql = "use zhihu_questions; insert into answer values(" + item['id'] + "," + item[
+                        'question_id'] + ",'" + item['author'] + "','" + item['url'] + "','" + item[
+                              'abstract'] + "','" + item['agree_count'] + "','" + item['comment_count'] + "')".encode(
+                        'utf-8').decode('utf-8')
+                    self.cursor.execute(sql)
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+                return item
+        return item

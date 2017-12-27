@@ -52,3 +52,40 @@ class PostItem(scrapy.Item):
 class PostCommentItem(scrapy.Item):
     post_title = scrapy.Field()
     comment_text = scrapy.Field()
+
+
+class ZhihuQuestionCrawlerItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    title = scrapy.Field()
+    link = scrapy.Field()
+    desc = scrapy.Field()
+    pass
+
+
+class ZhihuQuestionQuestionItem(scrapy.Item):
+    id = scrapy.Field()
+    url = scrapy.Field()
+    name = scrapy.Field()
+    comment_count = scrapy.Field()
+    answer_count = scrapy.Field()
+    pass
+
+
+class ZhihuQuestionAnswerItem(scrapy.Item):
+    id = scrapy.Field()
+    question_id = scrapy.Field()
+    author = scrapy.Field()
+    url = scrapy.Field()
+    abstract = scrapy.Field()
+    agree_count = scrapy.Field()
+    comment_count = scrapy.Field()
+    pass
+
+
+class ZhihuQuestionCommentItem(scrapy.Item):
+    related_id = scrapy.Field()
+    author = scrapy.Field()
+    release_time = scrapy.Field()
+    content = scrapy.Field()
+    pass

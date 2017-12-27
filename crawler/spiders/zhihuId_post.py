@@ -9,6 +9,7 @@ from selenium.webdriver.remote.remote_connection import LOGGER
 import logging
 from crawler.items import \
     UserItem, FollowingListItem, AnswerItem, PostItem, PostCommentItem
+from crawler.settings import PhantomJS_PATH
 
 LOGGER.setLevel(logging.WARNING)
 
@@ -79,8 +80,8 @@ class DmozSpider(scrapy.spiders.CrawlSpider):
     # 爬取一个post界面的comment
     def parse_post_comment(self, url):
         print("评论操作")
-        # driver = webdriver.PhantomJS(executable_path='/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs')
-        driver = webdriver.PhantomJS(executable_path='G:\\vagrant\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
+        driver = webdriver.PhantomJS(executable_path=PhantomJS_PATH)
+        # driver = webdriver.PhantomJS(executable_path='G:\\vagrant\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
         driver.get(url)
         time.sleep(0.5)
         for post in driver.find_elements_by_xpath("//div[@id='Profile-posts']//div[@class='List-item']"):
