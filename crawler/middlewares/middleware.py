@@ -7,7 +7,8 @@ class JavaScriptMiddleware(object):
     def process_request(self, request, spider):
         if 'zhihu' or 'weibo' in spider.name:
             print("PhantomJs is starting...")
-            driver = webdriver.PhantomJS(executable_path='/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs')
+            # driver = webdriver.PhantomJS(executable_path='/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs')
+            driver = webdriver.PhantomJS(executable_path='G:\\vagrant\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
             driver.get(request.url)
             if 'weibo' in spider.name:
                 time.sleep(3)
