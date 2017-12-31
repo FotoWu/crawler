@@ -80,6 +80,7 @@ PhantomJS_PATH = '/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs'
 ITEM_PIPELINES = {
     'crawler.pipelines.ZhihuIdPipeline': 301,
     'crawler.pipelines.ZhihuQuestionPipeline': 302,
+    'crawler.pipelines.SearchCrawlerPipeline': 303
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
