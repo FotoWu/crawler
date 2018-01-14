@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22a688ff-ba26-40f0-a081-b3005337223a" name="Default" comment="加入了weibo topic爬虫和search item爬虫">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/crawler.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/65729be9-84e9-40f9-91dd-de1caf03839e.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="22a688ff-ba26-40f0-a081-b3005337223a" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/begin.py" afterPath="$PROJECT_DIR$/begin.py" />
+      <change beforePath="$PROJECT_DIR$/crawler/settings.py" afterPath="$PROJECT_DIR$/crawler/settings.py" />
+      <change beforePath="$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py" afterPath="$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py" />
+      <change beforePath="$PROJECT_DIR$/ghostdriver.log" afterPath="$PROJECT_DIR$/ghostdriver.log" />
     </list>
     <ignored path=".idea/" />
+    <ignored mask="*.png" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/crawler$begin.coverage" NAME="begin Coverage Results" MODIFIED="1515904140213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/crawler$begin.coverage" NAME="begin Coverage Results" MODIFIED="1515906099138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/crawler$test.coverage" NAME="test Coverage Results" MODIFIED="1513150317341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
@@ -45,23 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="zhihuId_answer_id.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuId_answer_id.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/items.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="153" column="18" lean-forward="true" selection-start-line="153" selection-start-column="18" selection-end-line="153" selection-end-column="18" />
+            <state relative-caret-position="-207">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -71,29 +60,29 @@
         <entry file="file://$PROJECT_DIR$/begin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="1" column="44" lean-forward="true" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+              <caret line="1" column="51" lean-forward="false" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="middleware.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crawler/middlewares/middleware.py">
+      <file leaf-file-name="zhihuSearchTopic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuSearchTopic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeibotopicSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crawler/spiders/WeibotopicSpider.py">
+      <file leaf-file-name="zhihuSearchUser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuSearchUser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1050">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#24#55#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/crawler/spiders/WeiboSearchSpider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
               </folding>
@@ -111,31 +100,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+              <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crawler/middlewares.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crawler/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="83" column="35" lean-forward="true" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+            <state relative-caret-position="300">
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zhihuQuestion_crawler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zhihuSearch.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuSearch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -144,38 +145,51 @@
       <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="187" column="0" lean-forward="true" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+            <state relative-caret-position="9206">
+              <caret line="354" column="29" lean-forward="false" selection-start-line="354" selection-start-column="29" selection-end-line="354" selection-end-column="29" />
               <folding>
-                <marker date="1515904828326" expanded="true" signature="935:968" ph="select * fro... users" />
-                <marker date="1515904828326" expanded="true" signature="1122:1435" ph="update users... " />
-                <marker date="1515904828326" expanded="true" signature="1952:2303" ph="insert into users... " />
-                <marker date="1515904828326" expanded="true" signature="2964:3034" ph="select * fro... following_list" />
-                <marker date="1515904828326" expanded="true" signature="3258:3324" ph="insert into following_list... " />
-                <marker date="1515904828326" expanded="true" signature="3645:3700" ph="select * fro... answers" />
-                <marker date="1515904828326" expanded="true" signature="3916:4007" ph="insert into answers... " />
-                <marker date="1515904828326" expanded="true" signature="4375:4429" ph="select * fro... posts" />
-                <marker date="1515904828326" expanded="true" signature="4648:4737" ph="insert into posts... " />
-                <marker date="1515904828326" expanded="true" signature="5112:5178" ph="select * fro... post_comment" />
-                <marker date="1515904828326" expanded="true" signature="5404:5470" ph="insert into post_comment... " />
-                <marker date="1515904828326" expanded="true" signature="6400:6436" ph="select * fro... question" />
-                <marker date="1515904828326" expanded="true" signature="7238:7297" ph="select * fro... comment" />
-                <marker date="1515904828326" expanded="true" signature="8151:8185" ph="select * fro... answer" />
-                <marker date="1515904828326" expanded="true" signature="9559:9592" ph="select * fro... topic" />
-                <marker date="1515904828326" expanded="true" signature="9746:9866" ph="update topic... " />
-                <marker date="1515904828326" expanded="true" signature="10145:10282" ph="insert into topic... " />
-                <marker date="1515904828326" expanded="true" signature="10711:10745" ph="select * fro... follower" />
-                <marker date="1515904828326" expanded="true" signature="10897:10939" ph="update follower... " />
-                <marker date="1515904828326" expanded="true" signature="11121:11201" ph="insert into follower... " />
-                <marker date="1515904828326" expanded="true" signature="11529:11560" ph="select * fro... post" />
-                <marker date="1515904828326" expanded="true" signature="11713:12064" ph="update post... " />
-                <marker date="1515904828326" expanded="true" signature="12628:13005" ph="insert into post... " />
-                <marker date="1515904828326" expanded="true" signature="13762:13803" ph="select * fro... comment" />
-                <marker date="1515904828326" expanded="true" signature="13963:14035" ph="update comment... " />
-                <marker date="1515904828326" expanded="true" signature="14253:14364" ph="insert into comment... " />
-                <marker date="1515904828326" expanded="true" signature="15186:15225" ph="select * fro... weibosearch" />
-                <marker date="1515904828326" expanded="true" signature="15378:15706" ph="update weibosearch... " />
-                <marker date="1515904828326" expanded="true" signature="16289:16638" ph="insert into weibosearch... " />
+                <marker date="1515905739627" expanded="true" signature="935:968" ph="select * fro... users" />
+                <marker date="1515905739627" expanded="true" signature="1122:1435" ph="update users... " />
+                <marker date="1515905739627" expanded="true" signature="1952:2303" ph="insert into users... " />
+                <marker date="1515905739627" expanded="true" signature="2964:3034" ph="select * fro... following_list" />
+                <marker date="1515905739627" expanded="true" signature="3258:3324" ph="insert into following_list... " />
+                <marker date="1515905739627" expanded="true" signature="3645:3700" ph="select * fro... answers" />
+                <marker date="1515905739627" expanded="true" signature="3916:4007" ph="insert into answers... " />
+                <marker date="1515905739627" expanded="true" signature="4375:4429" ph="select * fro... posts" />
+                <marker date="1515905739627" expanded="true" signature="4648:4737" ph="insert into posts... " />
+                <marker date="1515905739627" expanded="true" signature="5112:5178" ph="select * fro... post_comment" />
+                <marker date="1515905739627" expanded="true" signature="5404:5470" ph="insert into post_comment... " />
+                <marker date="1515905739627" expanded="true" signature="6400:6436" ph="select * fro... question" />
+                <marker date="1515905739627" expanded="true" signature="7238:7297" ph="select * fro... comment" />
+                <marker date="1515905739627" expanded="true" signature="8151:8185" ph="select * fro... answer" />
+                <marker date="1515905739627" expanded="true" signature="9559:9592" ph="select * fro... topic" />
+                <marker date="1515905739627" expanded="true" signature="9746:9866" ph="update topic... " />
+                <marker date="1515905739627" expanded="true" signature="10145:10282" ph="insert into topic... " />
+                <marker date="1515905739627" expanded="true" signature="10711:10745" ph="select * fro... follower" />
+                <marker date="1515905739627" expanded="true" signature="10897:10939" ph="update follower... " />
+                <marker date="1515905739627" expanded="true" signature="11121:11201" ph="insert into follower... " />
+                <marker date="1515905739627" expanded="true" signature="11529:11560" ph="select * fro... post" />
+                <marker date="1515905739627" expanded="true" signature="11713:12064" ph="update post... " />
+                <marker date="1515905739627" expanded="true" signature="12628:13005" ph="insert into post... " />
+                <marker date="1515905739627" expanded="true" signature="13762:13803" ph="select * fro... comment" />
+                <marker date="1515905739627" expanded="true" signature="13963:14035" ph="update comment... " />
+                <marker date="1515905739627" expanded="true" signature="14253:14364" ph="insert into comment... " />
+                <marker date="1515905739627" expanded="true" signature="15186:15225" ph="select * fro... weibosearch" />
+                <marker date="1515905739627" expanded="true" signature="15378:15706" ph="update weibosearch... " />
+                <marker date="1515905739627" expanded="true" signature="16289:16638" ph="insert into weibosearch... " />
+                <marker date="1515905739627" expanded="true" signature="17898:17941" ph="select * fro... search_content" />
+                <marker date="1515905739627" expanded="true" signature="18096:18243" ph="update search_content... " />
+                <marker date="1515905739627" expanded="true" signature="18567:18719" ph="insert into search_content... " />
+                <marker date="1515905739627" expanded="true" signature="19178:19255" ph="select * fro... search_content_comment" />
+                <marker date="1515905739627" expanded="true" signature="19488:19575" ph="insert into search_content_comment... " />
+                <marker date="1515905739627" expanded="true" signature="19921:19961" ph="select * fro... search_users" />
+                <marker date="1515905739627" expanded="true" signature="20115:20414" ph="update search_users... " />
+                <marker date="1515905739627" expanded="true" signature="20947:21305" ph="insert into search_users... " />
+                <marker date="1515905739627" expanded="true" signature="21997:22074" ph="select * fro... search_following_list" />
+                <marker date="1515905739627" expanded="true" signature="22298:22371" ph="insert into search_following_list... " />
+                <marker date="1515905739627" expanded="true" signature="22697:22738" ph="select * fro... search_topic" />
+                <marker date="1515905739627" expanded="true" signature="22893:23059" ph="update search_topic... " />
+                <marker date="1515905739627" expanded="true" signature="23434:23630" ph="insert into search_topic... " />
               </folding>
             </state>
           </provider>
@@ -202,6 +216,7 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -213,7 +228,6 @@
         <option value="$PROJECT_DIR$/爬虫-自动化测试的要求.txt" />
         <option value="$PROJECT_DIR$/crawler/spiders/weiboId_crawler.py" />
         <option value="$PROJECT_DIR$/.idea/crawler.iml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/65729be9-84e9-40f9-91dd-de1caf03839e/console.sql" />
         <option value="$PROJECT_DIR$/crawler/spiders/zhihuId_crawler.py" />
@@ -221,12 +235,14 @@
         <option value="$PROJECT_DIR$/crawler/spiders/zhihuId_answer_id.py" />
         <option value="$PROJECT_DIR$/crawler/spiders/zhihuId_post.py" />
         <option value="$PROJECT_DIR$/crawler/spiders/WeibotopicSpider.py" />
-        <option value="$PROJECT_DIR$/begin.py" />
         <option value="$PROJECT_DIR$/crawler/items.py" />
         <option value="$PROJECT_DIR$/crawler/middlewares/middleware.py" />
-        <option value="$PROJECT_DIR$/crawler/settings.py" />
         <option value="$PROJECT_DIR$/crawler/pipelines.py" />
         <option value="$PROJECT_DIR$/crawler/spiders/WeiboSearchSpider.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/crawler/settings.py" />
+        <option value="$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py" />
+        <option value="$PROJECT_DIR$/begin.py" />
       </list>
     </option>
   </component>
@@ -264,23 +280,6 @@
               <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="crawler" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="middlewares" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-              <item name="spiders" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -294,6 +293,123 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.0.12/resources/app/git/cmd/git.exe" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/items.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/middlewares/middleware.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/pipelines.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/settings.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/spiders/zhihuSearch.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/spiders/zhihuSearchTopic.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/crawler/spiders/zhihuSearchUser.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -420,12 +536,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515905167949</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="加入了weibo topic爬虫和search item爬虫">
+      <created>1515905219673</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1515905219673</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983682" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
@@ -433,9 +555,9 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1362661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1362661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -520,9 +642,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/remote_sources/1234433152/2074095944/scrapy/http/response/text.py" />
-    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/remote_sources/1234433152/2074095944/scrapy/spiders/crawl.py" />
-    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/remote_sources/1234433152/2074095944/selenium/webdriver/remote/webdriver.py" />
     <entry file="file://$PROJECT_DIR$/crawler/begin.py" />
     <entry file="file://$USER_HOME$/.PyCharm2017.3/system/remote_sources/1234433152/2074095944/selenium/webdriver/phantomjs/webdriver.py" />
     <entry file="file://$USER_HOME$/.PyCharm2017.3/system/remote_sources/1234433152/2074095944/twisted/internet/base.py" />
@@ -688,16 +807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/crawler.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -726,7 +835,7 @@
         <state relative-caret-position="0">
           <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -774,63 +883,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crawler/middlewares/middleware.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+        <state relative-caret-position="-240">
+          <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/begin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="1" column="44" lean-forward="true" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="83" column="35" lean-forward="true" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/pipelines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="187" column="0" lean-forward="true" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding>
-            <marker date="1515904828326" expanded="true" signature="935:968" ph="select * fro... users" />
-            <marker date="1515904828326" expanded="true" signature="1122:1435" ph="update users... " />
-            <marker date="1515904828326" expanded="true" signature="1952:2303" ph="insert into users... " />
-            <marker date="1515904828326" expanded="true" signature="2964:3034" ph="select * fro... following_list" />
-            <marker date="1515904828326" expanded="true" signature="3258:3324" ph="insert into following_list... " />
-            <marker date="1515904828326" expanded="true" signature="3645:3700" ph="select * fro... answers" />
-            <marker date="1515904828326" expanded="true" signature="3916:4007" ph="insert into answers... " />
-            <marker date="1515904828326" expanded="true" signature="4375:4429" ph="select * fro... posts" />
-            <marker date="1515904828326" expanded="true" signature="4648:4737" ph="insert into posts... " />
-            <marker date="1515904828326" expanded="true" signature="5112:5178" ph="select * fro... post_comment" />
-            <marker date="1515904828326" expanded="true" signature="5404:5470" ph="insert into post_comment... " />
-            <marker date="1515904828326" expanded="true" signature="6400:6436" ph="select * fro... question" />
-            <marker date="1515904828326" expanded="true" signature="7238:7297" ph="select * fro... comment" />
-            <marker date="1515904828326" expanded="true" signature="8151:8185" ph="select * fro... answer" />
-            <marker date="1515904828326" expanded="true" signature="9559:9592" ph="select * fro... topic" />
-            <marker date="1515904828326" expanded="true" signature="9746:9866" ph="update topic... " />
-            <marker date="1515904828326" expanded="true" signature="10145:10282" ph="insert into topic... " />
-            <marker date="1515904828326" expanded="true" signature="10711:10745" ph="select * fro... follower" />
-            <marker date="1515904828326" expanded="true" signature="10897:10939" ph="update follower... " />
-            <marker date="1515904828326" expanded="true" signature="11121:11201" ph="insert into follower... " />
-            <marker date="1515904828326" expanded="true" signature="11529:11560" ph="select * fro... post" />
-            <marker date="1515904828326" expanded="true" signature="11713:12064" ph="update post... " />
-            <marker date="1515904828326" expanded="true" signature="12628:13005" ph="insert into post... " />
-            <marker date="1515904828326" expanded="true" signature="13762:13803" ph="select * fro... comment" />
-            <marker date="1515904828326" expanded="true" signature="13963:14035" ph="update comment... " />
-            <marker date="1515904828326" expanded="true" signature="14253:14364" ph="insert into comment... " />
-            <marker date="1515904828326" expanded="true" signature="15186:15225" ph="select * fro... weibosearch" />
-            <marker date="1515904828326" expanded="true" signature="15378:15706" ph="update weibosearch... " />
-            <marker date="1515904828326" expanded="true" signature="16289:16638" ph="insert into weibosearch... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -839,15 +894,15 @@
         <state relative-caret-position="-1050">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#24#55#0" expanded="true" />
+            <element signature="e#24#55#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/crawler/items.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="153" column="18" lean-forward="true" selection-start-line="153" selection-start-column="18" selection-end-line="153" selection-end-column="18" />
+        <state relative-caret-position="-207">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -855,7 +910,7 @@
     <entry file="file://$PROJECT_DIR$/crawler/spiders/WeiboSearchSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
           </folding>
@@ -865,7 +920,110 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuQuestion_crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9206">
+          <caret line="354" column="29" lean-forward="false" selection-start-line="354" selection-start-column="29" selection-end-line="354" selection-end-column="29" />
+          <folding>
+            <marker date="1515905739627" expanded="true" signature="935:968" ph="select * fro... users" />
+            <marker date="1515905739627" expanded="true" signature="1122:1435" ph="update users... " />
+            <marker date="1515905739627" expanded="true" signature="1952:2303" ph="insert into users... " />
+            <marker date="1515905739627" expanded="true" signature="2964:3034" ph="select * fro... following_list" />
+            <marker date="1515905739627" expanded="true" signature="3258:3324" ph="insert into following_list... " />
+            <marker date="1515905739627" expanded="true" signature="3645:3700" ph="select * fro... answers" />
+            <marker date="1515905739627" expanded="true" signature="3916:4007" ph="insert into answers... " />
+            <marker date="1515905739627" expanded="true" signature="4375:4429" ph="select * fro... posts" />
+            <marker date="1515905739627" expanded="true" signature="4648:4737" ph="insert into posts... " />
+            <marker date="1515905739627" expanded="true" signature="5112:5178" ph="select * fro... post_comment" />
+            <marker date="1515905739627" expanded="true" signature="5404:5470" ph="insert into post_comment... " />
+            <marker date="1515905739627" expanded="true" signature="6400:6436" ph="select * fro... question" />
+            <marker date="1515905739627" expanded="true" signature="7238:7297" ph="select * fro... comment" />
+            <marker date="1515905739627" expanded="true" signature="8151:8185" ph="select * fro... answer" />
+            <marker date="1515905739627" expanded="true" signature="9559:9592" ph="select * fro... topic" />
+            <marker date="1515905739627" expanded="true" signature="9746:9866" ph="update topic... " />
+            <marker date="1515905739627" expanded="true" signature="10145:10282" ph="insert into topic... " />
+            <marker date="1515905739627" expanded="true" signature="10711:10745" ph="select * fro... follower" />
+            <marker date="1515905739627" expanded="true" signature="10897:10939" ph="update follower... " />
+            <marker date="1515905739627" expanded="true" signature="11121:11201" ph="insert into follower... " />
+            <marker date="1515905739627" expanded="true" signature="11529:11560" ph="select * fro... post" />
+            <marker date="1515905739627" expanded="true" signature="11713:12064" ph="update post... " />
+            <marker date="1515905739627" expanded="true" signature="12628:13005" ph="insert into post... " />
+            <marker date="1515905739627" expanded="true" signature="13762:13803" ph="select * fro... comment" />
+            <marker date="1515905739627" expanded="true" signature="13963:14035" ph="update comment... " />
+            <marker date="1515905739627" expanded="true" signature="14253:14364" ph="insert into comment... " />
+            <marker date="1515905739627" expanded="true" signature="15186:15225" ph="select * fro... weibosearch" />
+            <marker date="1515905739627" expanded="true" signature="15378:15706" ph="update weibosearch... " />
+            <marker date="1515905739627" expanded="true" signature="16289:16638" ph="insert into weibosearch... " />
+            <marker date="1515905739627" expanded="true" signature="17898:17941" ph="select * fro... search_content" />
+            <marker date="1515905739627" expanded="true" signature="18096:18243" ph="update search_content... " />
+            <marker date="1515905739627" expanded="true" signature="18567:18719" ph="insert into search_content... " />
+            <marker date="1515905739627" expanded="true" signature="19178:19255" ph="select * fro... search_content_comment" />
+            <marker date="1515905739627" expanded="true" signature="19488:19575" ph="insert into search_content_comment... " />
+            <marker date="1515905739627" expanded="true" signature="19921:19961" ph="select * fro... search_users" />
+            <marker date="1515905739627" expanded="true" signature="20115:20414" ph="update search_users... " />
+            <marker date="1515905739627" expanded="true" signature="20947:21305" ph="insert into search_users... " />
+            <marker date="1515905739627" expanded="true" signature="21997:22074" ph="select * fro... search_following_list" />
+            <marker date="1515905739627" expanded="true" signature="22298:22371" ph="insert into search_following_list... " />
+            <marker date="1515905739627" expanded="true" signature="22697:22738" ph="select * fro... search_topic" />
+            <marker date="1515905739627" expanded="true" signature="22893:23059" ph="update search_topic... " />
+            <marker date="1515905739627" expanded="true" signature="23434:23630" ph="insert into search_topic... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuSearch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuSearchTopic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/spiders/zhihuSearchUser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/begin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="51" lean-forward="false" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>

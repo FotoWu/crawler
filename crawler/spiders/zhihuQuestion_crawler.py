@@ -1,11 +1,8 @@
-import scrapy
-import urllib.request
 import time
 import re
 from selenium import webdriver
 from crawler.items import *
 from crawler.settings import PhantomJS_PATH
-import requests
 
 class ZhihuQuestionSpider(scrapy.Spider):
 
