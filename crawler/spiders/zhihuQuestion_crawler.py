@@ -5,12 +5,12 @@ import re
 from selenium import webdriver
 from crawler.items import *
 from crawler.settings import PhantomJS_PATH
-
+import requests
 
 class ZhihuQuestionSpider(scrapy.Spider):
 
-    MAX_COMMENT_NUM=30
-    MAX_ANSWER_NUM=500
+    MAX_COMMENT_NUM = 30
+    MAX_ANSWER_NUM = 500
 
     # question_sql=questionSql()
     now_question_id=-1
@@ -18,9 +18,9 @@ class ZhihuQuestionSpider(scrapy.Spider):
     name = "zhihuQuestion"
     allowed_domains = ["zhihuQuestion.org"]
     start_urls = [
-        # "https://www.zhihu.com/question/263770409"
-        # "https://www.zhihu.com/question/50364416"
-        # "https://www.zhihu.com/question/263508141",
+        "https://www.zhihu.com/question/263770409",
+        "https://www.zhihu.com/question/50364416",
+        "https://www.zhihu.com/question/263508141",
         "https://www.zhihu.com/question/37284137",
         "https://www.zhihu.com/question/66704959",
         "https://www.zhihu.com/question/31102779",

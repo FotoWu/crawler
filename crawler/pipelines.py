@@ -344,3 +344,132 @@ class WeibosearchPipeline(object):
             except Exception as error:
                 print(error)
         return item
+
+
+
+class SearchCrawlerPipeline(object):
+    def __init__(self):
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            port=settings.MYSQL_PORT,
+            db='zhihuSearch',
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASS,
+            charset='utf8',
+        )
+        self.cursor = self.connect.cursor()
+
+    def process_item(self, item, spider):
+        for field in item.fields:
+            if 'num' in field:
+                item[field] = re.sub(r'\D+', '', item[field])
+            item.setdefault(field, "")
+        if item.__class__ == SearchContentItem:
+            try:
+                self.cursor.execute("select * from search_content WHERE title=%s", item['title'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update search_content set id=%s, keyword=%s, title=%s, title_href=%s, author=%s, vote_num=%s, comment_num=%s
+                        WHERE title=%s
+                     """,
+                        (item['id'], item['keyword'], item['title'], item['title_href'], item['author'],
+                         item['vote_num'], item['comment_num'], item['title'],)
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into search_content(id, keyword, title, title_href, author, vote_num, comment_num)
+                            values(%s, %s, %s, %s, %s, %s, %s)""",
+                        (item['id'], item['keyword'], item['title'], item['title_href'], item['author'],
+                         item['vote_num'], item['comment_num'],)
+                    )
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+            return item
+        elif item.__class__ == SearchContentCommentItem:
+            try:
+                self.cursor.execute(
+                    "select * from search_content_comment WHERE id=%s and author=%s and content=%s",
+                    (item['id'], item['author'], item['content']),
+                )
+                ret = self.cursor.fetchone()
+                if ret is None:
+                    self.cursor.execute(
+                        """insert into search_content_comment(id, keyword, author, content) values(%s, %s, %s, %s)""",
+                        (item['id'], item['keyword'], item['author'], item['content'],)
+                    )
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+            return item
+        elif item.__class__ == SearchUserItem:
+            try:
+                self.cursor.execute("select * from search_users WHERE name=%s", item['name'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update search_users set name=%s, signature=%s, settlement=%s, industry=%s, work_experience=%s,
+                          education_experience=%s, personal_profile=%s, answer_num=%s, question_num=%s,
+                          post_num=%s, column_num=%s, thinking_num=%s, follower_num=%s WHERE name=%s""",
+                        (item['name'], item['signature'], item['settlement'], item['industry'], item['work_experience'],
+                         item['education_experience'], item['personal_profile'], item['answer_num'],
+                         item['question_num'],
+                         item['post_num'], item['column_num'], item['thinking_num'], item['following_num'],
+                         item['name'])
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into search_users(name, signature, settlement, industry, work_experience,
+                            education_experience, personal_profile, answer_num, question_num, post_num,
+                            column_num, thinking_num, following_num, follower_num)
+                            values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                        (item['name'], item['signature'], item['settlement'], item['industry'], item['work_experience'],
+                         item['education_experience'], item['personal_profile'], item['answer_num'],
+                         item['question_num'],
+                         item['post_num'], item['column_num'], item['thinking_num'], item['following_num'],
+                         item['follower_num'],)
+                    )
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+            return item
+        elif item.__class__ == SearchFollowingListItem:
+            try:
+                self.cursor.execute("select * from search_following_list where user_name = %s and follow_name = %s",
+                                    (item['user_name'], item['follow_name']))
+                ret = self.cursor.fetchone()
+                if ret is None:
+                    self.cursor.execute(
+                        "insert into search_following_list(user_name, follow_name) VALUES (%s, %s)",
+                        (item['user_name'], item['follow_name'])
+                    )
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+                return item
+        elif item.__class__ == SearchTopicItem:
+            try:
+                self.cursor.execute("select * from search_topic WHERE title=%s", item['title'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update search_topic set id=%s, keyword=%s, title=%s, title_href=%s, content=%s, 
+                        follow_num=%s, question_num=%s, essence_num=%s WHERE title=%s
+                     """,
+                        (item['id'], item['keyword'], item['title'], item['title_href'], item['content'],
+                         item['follow_num'], item['question_num'], item['essence_num'], item['title'],
+                         )
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into search_topic(id, keyword, title, title_href, content, follow_num, 
+                        question_num, essence_num)
+                            values(%s, %s, %s, %s, %s, %s, %s, %s)""",
+                        (item['id'], item['keyword'], item['title'], item['title_href'], item['content'],
+                         item['follow_num'], item['question_num'], item['essence_num'],)
+                    )
+                self.connect.commit()
+            except Exception as error:
+                print(error)
+        return item

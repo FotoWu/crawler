@@ -65,5 +65,19 @@ class JavaScriptMiddleware(object):
             body = driver.page_source
             print("访问", request.url)
             return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
+        if 'zhihuSearch' in spider.name:
+            driver = webdriver.PhantomJS(executable_path=PhantomJS_PATH)
+            driver.get(request.url)
+            time.sleep(0.5)
+            if spider.name == 'zhihuSearchUser':
+                try:
+                    show_more_button = driver.find_element_by_xpath("//button[@class='Button ProfileHeader-expandButton Button--plain']")
+                    show_more_button.click()
+                except Exception:
+                    print("暂无更多资料")
+            body = driver.page_source
+            driver.close()
+            driver.quit()
+            return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
         else:
             return

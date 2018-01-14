@@ -154,3 +154,57 @@ class WeibosearchItem(scrapy.Item):
         pre_like_number = scrapy.Field()  # 原post赞数
         pre_transmit_number = scrapy.Field()  # 原post转发数
         pass
+
+class SearchContentItem(scrapy.Item):
+    id = scrapy.Field()
+    keyword =  scrapy.Field()
+    title = scrapy.Field()
+    title_href = scrapy.Field()
+    author = scrapy.Field()
+    vote_num = scrapy.Field()
+    comment_num = scrapy.Field()
+    pass
+
+
+class SearchContentCommentItem(scrapy.Item):
+    id = scrapy.Field()
+    keyword = scrapy.Field()
+    author = scrapy.Field()
+    content = scrapy.Field()
+    pass
+
+
+class SearchUserItem(scrapy.Item):
+    name = scrapy.Field()
+    signature = scrapy.Field()
+    settlement = scrapy.Field()
+    industry = scrapy.Field()
+    work_experience = scrapy.Field()
+    education_experience = scrapy.Field()
+    personal_profile = scrapy.Field()
+    answer_num = scrapy.Field()
+    question_num = scrapy.Field()
+    post_num = scrapy.Field()
+    column_num = scrapy.Field()
+    thinking_num = scrapy.Field()
+    following_num = scrapy.Field()
+    follower_num = scrapy.Field()
+    pass
+
+
+class SearchFollowingListItem(scrapy.Item):
+    user_name = scrapy.Field()
+    follow_name = scrapy.Field()
+    pass
+
+
+class SearchTopicItem(scrapy.Item):
+    id = scrapy.Field()
+    keyword =  scrapy.Field()
+    title = scrapy.Field()
+    title_href = scrapy.Field()
+    content = scrapy.Field()
+    follow_num = scrapy.Field()
+    question_num = scrapy.Field()
+    essence_num = scrapy.Field()
+    pass

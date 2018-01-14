@@ -82,6 +82,7 @@ ITEM_PIPELINES = {
     'crawler.pipelines.ZhihuQuestionPipeline': 302,
     'crawler.pipelines.WeiboTopicPipeline': 303,
     'crawler.pipelines.WeibosearchPipeline': 304,
+    'crawler.pipelines.SearchCrawlerPipeline': 303
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
