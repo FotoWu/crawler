@@ -89,3 +89,68 @@ class ZhihuQuestionCommentItem(scrapy.Item):
     release_time = scrapy.Field()
     content = scrapy.Field()
     pass
+
+
+class WeiboTopicItem(scrapy.Item):
+    #id = scrapy.Field()
+    name = scrapy.Field()
+    read_num = scrapy.Field()
+    discuss_num = scrapy.Field()
+    follower_num = scrapy.Field()
+    host_name = scrapy.Field()
+    host_id = scrapy.Field()
+    pass
+
+
+class WeiboTopicPostItem(scrapy.Item):
+    url = scrapy.Field()
+    publish_name = scrapy.Field()
+    publish_id = scrapy.Field()
+    publish_time = scrapy.Field()
+    publish_from = scrapy.Field()
+    comment_num = scrapy.Field()
+    forward_num = scrapy.Field()
+    like_num = scrapy.Field()
+    origin_post_id = scrapy.Field()
+    origin_post_name = scrapy.Field()
+    origin_publish_time = scrapy.Field()
+    origin_from = scrapy.Field()
+    origin_comment_num = scrapy.Field()
+    origin_forward_num = scrapy.Field()
+    origin_like_num = scrapy.Field()
+    pass
+
+
+class WeiboTopicCommentItem(scrapy.Item):
+    comment_id = scrapy.Field()
+    author = scrapy.Field()
+    comment_time = scrapy.Field()
+    content = scrapy.Field()
+    pass
+
+
+class WeiboTopicFollowerItem(scrapy.Item):
+    id = scrapy.Field()
+    name = scrapy.Field()
+    url = scrapy.Field()
+    pass
+
+
+class WeibosearchItem(scrapy.Item):
+        link = scrapy.Field()  # link
+        pub_name = scrapy.Field()  # 发布人
+        pub_id = scrapy.Field()  # 发布人id
+        time = scrapy.Field()  # 发布时间（转化为绝对时间）
+        where = scrapy.Field()  # 来自
+        comment_number = scrapy.Field()  # 评论数
+        comment_list = scrapy.Field()  # 评论列表（前50）
+        like_number = scrapy.Field()  # 赞数
+        transmit_number = scrapy.Field()  # 转发数
+        forward_flag = scrapy.Field()  # 本post是否转发
+        pre_pub_id = scrapy.Field()  # 原post发布人，
+        pre_time = scrapy.Field()  # 原post发布时间（转化为绝对时间）
+        pre_where = scrapy.Field()  # 原post来自
+        pre_comment_number = scrapy.Field()  # 原post评论数
+        pre_like_number = scrapy.Field()  # 原post赞数
+        pre_transmit_number = scrapy.Field()  # 原post转发数
+        pass

@@ -17,7 +17,7 @@ class ZhihuIdPipeline(object):
         self.connect = pymysql.connect(
             host=settings.MYSQL_HOST,
             port=settings.MYSQL_PORT,
-            db=settings.MYSQL_DBNAME,
+            db="zhihu",
             user=settings.MYSQL_USER,
             passwd=settings.MYSQL_PASS,
             charset='utf8',
@@ -123,7 +123,14 @@ class ZhihuQuestionPipeline(object):
         pass
 
     def __init__(self):
-        self.connect = pymysql.connect("localhost","root","",db="zhihu_questions",use_unicode=True, charset="utf8")
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            port=settings.MYSQL_PORT,
+            db="zhihu_questions",
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASS,
+            charset='utf8',
+        )
         self.cursor = self.connect.cursor()
 
     def process_item(self, item, spider):
@@ -177,4 +184,163 @@ class ZhihuQuestionPipeline(object):
             except Exception as error:
                 print(error)
                 return item
+        return item
+
+
+class WeiboTopicPipeline(object):
+
+    def __init__(self):
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            port=settings.MYSQL_PORT,
+            db="weibo",
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASS,
+            charset='utf8',
+        )
+        self.cursor = self.connect.cursor()
+
+    def process_item(self, item, spider):
+        for field in item.fields:
+            # if 'num' in field:
+            #     item[field] = re.sub(r'\D+', '', item[field])
+            item.setdefault(field, "")
+        if item.__class__ == WeiboTopicItem:
+            try:
+                self.cursor.execute("select * from topic WHERE name=%s", item['name'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update topic set name=%s, read_num=%s, discuss_num=%s, follower_num=%s,
+                        host_name=%s, host_id=%s""",
+                        (item['name'], item['read_num'], item['discuss_num'], item['follower_num'],
+                         item['host_name'], item['host_id'],)
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into topic(name, read_num, discuss_num, follower_num, host_name, host_id)
+                          values(%s, %s, %s, %s, %s, %s)""",
+                        (item['name'], item['read_num'], item['discuss_num'], item['follower_num'],
+                         item['host_name'], item['host_id'],)
+                    )
+                self.connect.commit();
+            except Exception as error:
+                print(error)
+            return item
+        elif item.__class__ == WeiboTopicFollowerItem:
+            try:
+                self.cursor.execute("select * from follower WHERE id=%s", item['id'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update follower set id=%s, name=%s, url=%s""",
+                        (item['id'], item['name'], item['url'],)
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into follower(id, name, url)
+                          values(%s, %s, %s)""",
+                        (item['id'], item['name'], item['url'],)
+                    )
+                self.connect.commit();
+            except Exception as error:
+                print(error)
+            return item
+        elif item.__class__ == WeiboTopicPostItem:
+            try:
+                self.cursor.execute("select * from post WHERE url=%s", item['url'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update post set url=%s, publish_name=%s, publish_id=%s, publish_time=%s,
+                        publish_from=%s, forward_num=%s, comment_num=%s, like_num=%s, origin_post_id=%s,
+                        origin_post_name=%s, origin_publish_time=%s, origin_from=%s, origin_forward_num=%s,
+                        origin_comment_num=%s, origin_like_num=%s""",
+                        (item['url'], item['publish_name'], item['publish_id'], item['publish_time'],
+                         item['publish_from'], item['forward_num'], item['comment_num'], item['like_num'], item['origin_post_id'],
+                            item['origin_post_name'], item['origin_publish_time'], item['origin_from'], item['origin_forward_num'],
+                            item['origin_comment_num'], item['origin_like_num'],)
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into post(url, publish_name, publish_id, publish_time, publish_from, forward_num,
+                        comment_num, like_num, origin_post_id, origin_post_name, origin_publish_time, origin_from, origin_forward_num,
+                        origin_comment_num, origin_like_num)
+                          values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                        (item['url'], item['publish_name'], item['publish_id'], item['publish_time'],
+                         item['publish_from'], item['forward_num'], item['comment_num'], item['like_num'],
+                         item['origin_post_id'],
+                         item['origin_post_name'], item['origin_publish_time'], item['origin_from'],
+                         item['origin_forward_num'],
+                         item['origin_comment_num'], item['origin_like_num'],)
+                    )
+                self.connect.commit();
+            except Exception as error:
+                print(error)
+            return item
+        elif item.__class__ == WeiboTopicCommentItem:
+            try:
+                self.cursor.execute("select * from comment WHERE comment_id=%s", item['comment_id'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update comment set comment_id=%s, author=%s, comment_time=%s, content=%s""",
+                        (item['comment_id'], item['author'], item['comment_time'], item['content'],)
+                    )
+                else:
+                    self.cursor.execute(
+                        """insert into comment(comment_id, author, comment_time, content)
+                          values(%s, %s, %s, %s)""",
+                        (item['comment_id'], item['author'], item['comment_time'], item['content'],)
+                    )
+                self.connect.commit();
+            except Exception as error:
+                print(error)
+            return item
+
+
+class WeibosearchPipeline(object):
+
+    def __init__(self):
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            port=settings.MYSQL_PORT,
+            db="weibosearch",
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASS,
+            charset='utf8',
+        )
+        self.cursor = self.connect.cursor()
+
+    def process_item(self, item, spider):
+        print("begin1")
+        if item.__class__ == WeibosearchItem:
+            print("begin2")
+            try:
+                self.cursor.execute("select * from weibosearch WHERE link=%s",item['link'])
+                ret = self.cursor.fetchone()
+                if ret:
+                    self.cursor.execute(
+                        """update weibosearch set link=%s, pub_name=%s,pub_id=%s, pub_time=%s, comefrom=%s, comment_number=%s,
+                        comment_list=%s, like_number=%s, transmit_number=%s, forward_flag=%s,pre_pub_id=%s,pre_pub_time=%s,
+                        pre_comefrom=%s,pre_comment_number=%s ,pre_like_number=%s,pre_transmit_number=%s""",
+                        (item['link'], item['pub_name'], item['pub_id'], item['time'], item['where'],
+                         item['comment_number'], item['comment_list'],item['like_number'], item['transmit_number'],
+                         item['forward_flag'], item['pre_pub_id'],item['pre_time'],item['pre_where'],item['pre_comment_number'],
+                         item['pre_like_number'],item['pre_transmit_number'],)
+                    )
+                else:
+                    print("insert ing")
+                    self.cursor.execute(
+                        """insert into weibosearch(link, pub_name, pub_time,pub_id, comefrom, comment_number,comment_list, like_number, 
+                        transmit_number, forward_flag,pre_pub_id,pre_pub_time,pre_comefrom,pre_comment_number,pre_like_number,pre_transmit_number)
+                          values:%s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s,%s,%s""",
+                        (item['link'], item['pub_name'], item['pub_id'], item['time'], item['where'],
+                         item['comment_number'], item['comment_list'],item['like_number'], item['transmit_number'],
+                         item['forward_flag'], item['pre_pub_id'],item['pre_time'],item['pre_where'],item['pre_comment_number'],
+                         item['pre_like_number'],item['pre_transmit_number'],)
+                    )
+                self.connect.commit()
+            except Exception as error:
+                print(error)
         return item

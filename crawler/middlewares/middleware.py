@@ -34,5 +34,36 @@ class JavaScriptMiddleware(object):
             body = driver.page_source
             print("访问", request.url)
             return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
+        if 'weibotopic' in spider.name:
+            print("PhantomJs is starting...")
+            service_args = ['--load-images=no', '--disk-cache=yes', '--ignore-ssl-errors=true']
+            driver = webdriver.PhantomJS(executable_path=PhantomJS_PATH, service_args=service_args)
+            driver.get(request.url)
+            time.sleep(5)
+            js = "window.scrollTo(0,document.body.scrollHeight)"
+            for i in range(0, 300):
+                driver.execute_script(js)
+                # time.sleep(0.1)
+            print("已保存截图")
+            driver.save_screenshot("tmp.png")
+            body = driver.page_source
+            print("访问", request.url)
+            # driver.quit()
+            return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
+        if 'weibosearch' in spider.name:
+            print("PhantomJs is starting...")
+            service_args = ['--load-images=no', '--disk-cache=yes', '--ignore-ssl-errors=true']
+            driver = webdriver.PhantomJS(executable_path=PhantomJS_PATH, service_args=service_args)
+            # driver.implicitly_wait(5)
+            time.sleep(5)
+            js = "window.scrollTo(0,document.body.scrollHeight)"
+            for i in range(0, 300):
+                driver.execute_script(js)
+                # time.sleep(0.5)
+            print("已保存截图")
+            driver.save_screenshot("tmp.png")
+            body = driver.page_source
+            print("访问", request.url)
+            return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
         else:
             return

@@ -32,7 +32,7 @@ MYSQL_DBNAME = 'zhihu'
 MYSQL_USER = 'root'
 MYSQL_PASS = 'root'
 MYSQL_PORT = 33060
-PhantomJS_PATH = '/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs'
+PhantomJS_PATH = 'C:\\Users\\lsp75\\Downloads\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -80,6 +80,8 @@ PhantomJS_PATH = '/Users/linsp/Downloads/phantomjs-2.1-2.1-macosx/bin/phantomjs'
 ITEM_PIPELINES = {
     'crawler.pipelines.ZhihuIdPipeline': 301,
     'crawler.pipelines.ZhihuQuestionPipeline': 302,
+    'crawler.pipelines.WeiboTopicPipeline': 303,
+    'crawler.pipelines.WeibosearchPipeline': 304,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
